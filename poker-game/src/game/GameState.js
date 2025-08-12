@@ -30,7 +30,7 @@ class GameState {
     this.moveHistory = [];
     
     this.player = {
-      name: 'Player',
+      name: 'Player 1',
       chips: INITIAL_CHIPS,
       hand: [],
       currentBet: 0,
@@ -41,7 +41,7 @@ class GameState {
     };
     
     this.opponent = {
-      name: 'AI Opponent',
+      name: 'Player 2',
       chips: INITIAL_CHIPS,
       hand: [],
       currentBet: 0,
@@ -213,6 +213,7 @@ class GameState {
         break;
         
       case PLAYER_ACTIONS.CALL:
+        // eslint-disable-next-line no-case-declarations
         const callAmount = Math.min(this.currentBet - currentPlayer.currentBet, currentPlayer.chips);
         currentPlayer.chips -= callAmount;
         currentPlayer.currentBet += callAmount;
@@ -226,6 +227,7 @@ class GameState {
         
       case PLAYER_ACTIONS.RAISE:
         // Minimum raise: must raise by at least MIN_RAISE (big blind) amount
+        // eslint-disable-next-line no-case-declarations
         const minRaiseTotal = this.currentBet + MIN_RAISE;
         
         // Check if the raise is valid
@@ -233,6 +235,7 @@ class GameState {
           return false;
         }
         
+        // eslint-disable-next-line no-case-declarations
         const raiseAmount = amount - currentPlayer.currentBet;
         currentPlayer.chips -= raiseAmount;
         currentPlayer.currentBet = amount;
@@ -246,6 +249,7 @@ class GameState {
         break;
         
       case PLAYER_ACTIONS.ALL_IN:
+        // eslint-disable-next-line no-case-declarations
         const allInAmount = currentPlayer.chips;
         currentPlayer.currentBet += allInAmount;
         this.pot += allInAmount;
@@ -429,6 +433,7 @@ class GameState {
       winner: this.winner,
       winnerHand: this.winnerHand,
       moveHistory: this.moveHistory || [],
+      currentPlayerIndex: this.currentPlayerIndex,
       isPlayerTurn: this.currentPlayerIndex === 0,
       isGameOver: this.isGameOver()
     };

@@ -27,9 +27,7 @@ const MoveHistory = ({ moves = [] }) => {
   };
 
   const getPlayerColor = (playerName) => {
-    if (playerName === 'Player') return 'text-cyan-300';
-    if (playerName === 'Dealer') return 'text-yellow-300';
-    return 'text-pink-300';
+    return playerName === 'Player 1' ? 'text-cyan-300' : 'text-pink-300';
   };
 
   const formatPhase = (phase) => {
@@ -54,7 +52,7 @@ const MoveHistory = ({ moves = [] }) => {
               <div className="flex justify-between items-start">
                 <div className="flex-1">
                   <span className={`font-semibold ${getPlayerColor(move.player)}`}>
-                    {move.player === 'Player' ? 'You' : move.player === 'Dealer' ? 'Dealer' : 'AI'}
+                    {move.player}
                   </span>
                   <span className="text-white mx-1">→</span>
                   <span className="text-gray-200">{move.action}</span>

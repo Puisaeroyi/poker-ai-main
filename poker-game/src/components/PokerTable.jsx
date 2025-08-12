@@ -109,7 +109,6 @@ const PokerTable = ({ gameState, onCanvasReady }) => {
       if (!player) return;
 
       const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
       let x, y;
 
       if (position === 'bottom') {
