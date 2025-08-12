@@ -1,13 +1,13 @@
 # Texas Hold'em Poker Game
 
-A simple Texas Hold'em poker game built with React, Tailwind CSS v3, and Canvas. Play against an AI opponent in this classic card game!
+A simple Texas Hold'em poker game built with React, Tailwind CSS v3, and Canvas. Challenge a friend over a local network using a lightweight WebSocket server.
 
 ## Features
 
-### ✅ Completed (Phases 1-4)
+### ✅ Completed
 - **Full Game Engine**: Complete Texas Hold'em rules and gameplay
 - **Canvas Rendering**: Visual poker table with card animations
-- **AI Opponent**: Intelligent opponent with decision-making logic
+- **LAN Multiplayer**: Two players can battle head to head over a LAN connection
 - **Betting System**: Full betting rounds (pre-flop, flop, turn, river)
 - **Hand Evaluation**: Accurate poker hand ranking and comparison
 - **Game State Management**: Proper game flow and state transitions
@@ -15,10 +15,20 @@ A simple Texas Hold'em poker game built with React, Tailwind CSS v3, and Canvas.
 
 ## How to Play
 
-1. **Start the game**: Click "Deal New Hand" to begin
-2. **Betting rounds**: Use the controls to Fold, Check, Call, or Raise
-3. **Community cards**: Watch as the Flop, Turn, and River are dealt
-4. **Showdown**: Best hand wins the pot!
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+2. **Start the WebSocket server**:
+   ```bash
+   npm run server
+   ```
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+4. **Connect**: From another machine on the same LAN, open `http://<host-ip>:5173` in a browser. The client will automatically connect to the host's IP on port `8080`.
+5. **Play**: Click "Deal New Hand" to begin. Use the controls to Fold, Check, Call, Raise, or go All In.
 
 ## Poker Hand Rankings (from highest to lowest)
 1. Royal Flush
@@ -32,19 +42,6 @@ A simple Texas Hold'em poker game built with React, Tailwind CSS v3, and Canvas.
 9. Pair
 10. High Card
 
-## Installation
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-```
-
 ## Game Controls
 - **Fold**: Give up your hand and lose any bets
 - **Check**: Pass the action (when no bet is required)
@@ -57,23 +54,23 @@ npm run build
 - **Vite**: Build tool and development server
 - **Tailwind CSS v3**: Styling and responsive design
 - **Canvas API**: Card rendering and table visualization
-- **JavaScript Classes**: Game logic and AI implementation
+- **JavaScript Classes**: Game logic implementation
+- **ws**: WebSocket server for multiplayer
 
 ## Project Structure
 ```
 src/
 ├── components/       # React components
-│   ├── Game.jsx     # Main game controller
+│   ├── Game.jsx      # Main game controller
 │   ├── PokerTable.jsx # Canvas table rendering
 │   └── GameControls.jsx # Player action buttons
-├── game/            # Game logic
-│   ├── Card.js      # Card class with rendering
-│   ├── Deck.js      # Deck management
+├── game/             # Game logic
+│   ├── Card.js       # Card class with rendering
+│   ├── Deck.js       # Deck management
 │   ├── HandEvaluator.js # Hand strength evaluation
-│   ├── GameState.js # Game state management
-│   └── AIPlayer.js  # AI opponent logic
-└── utils/           # Constants and helpers
-    └── constants.js # Game constants
+│   └── GameState.js  # Game state management
+└── utils/            # Constants and helpers
+    └── constants.js  # Game constants
 ```
 
 ## Game Rules
@@ -83,4 +80,4 @@ src/
 - Small blind: $10, Big blind: $20
 - Starting chips: $1000
 
-Enjoy playing Texas Hold'em Poker!
+Enjoy playing Texas Hold'em Poker with your friends!
